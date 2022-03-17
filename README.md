@@ -30,6 +30,9 @@ The application contains a GUI application that connect to different micro-servi
 ## Deployment steps
 Before we start, make sure the OpenShift Serverless operator is installed and an instance of knative-serving is deployed in the knative-serving namespace which will enable the serverless capability in OpenShift, so we can deploy the serverless components in this demo. We will use the 'dev' namespace/project to deploy the whole solution.
 
+You can read more about OpenShift Serverless built-in capabilities: https://cloud.redhat.com/learn/topics/serverless
+
+
 Before we start, make sure to login to Openshift cluster using OC command and create a working folder:
 ```
 //login to OpenShift cluster
