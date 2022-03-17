@@ -101,6 +101,28 @@ The following diagram shows the serverless service and its different revisions w
 For more info: https://knative.dev/docs/serving/
 
 Conclusion:   
-Building a portable serverless applications that utilize some OpenShift capabilities such as Source2Image where we provide the source code to OpenShift, it will be build the application, create container image, store it inside the embeded image registery and finally we can use this image to create either server-based or serverless deployment.
-This provide portability across cloud providers using the abstracted layer of Kubernetes or OpenShift in our example.
+
+1) It is easy to deploy any existing application as a serverless deployment using OpenShift capabilities, where services like source2Image (where we provide the source code to OpenShift, it will be build the application, create container image, store it inside the embeded image registery and finally we can use this image to create either server-based or serverless deployment) will make this smooth deployment, the alternative is to deploy the images as serverless directly using YAML files such as
+
+```
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: serverless-services
+  namespace: dev
+spec:
+  template:
+    spec:
+      containers:
+        - image: {IMAGE_URL}        
+```
+
+2) Building a portable serverless applications that utilize some OpenShift capabilities, make it easy to move your application across different deployment models e.g. private or public cloud or acorss different public cloud providers. This portability across cloud providers is achieved by the abstraction layer of Kubernetes or OpenShift in our example.
+
+3) The selection of the micro-services that need to be deployed as a serverless components needs to be taken based on the expectiations/actual consumption rate of the services, so for frequently used services, it is better to avoid serverless deployment, while in rarely used services it will be good to use serverless (in our demo, we just convert all to build the example, but we can consider services such as exchange rate and loan services as very good candidates for serverless while the other micro-services need to be deployed with auto-scaling to accomodate the expected high traffic). 
+
+4) The selection of the technology to build the micro-servces is very important, for example, technology like Quarkus is recommended to build serverless applications, as it ignites fast (start in milliseconds) and consumes low memory and low cpu in compare to other Java frameworks, all this makes it very good fit for building serverless applications.
+For more info about Quarkus: https://quarkus.io/
+
+5) The portability and loose coupling comes at a cost, if we compare it to the attractive public cloud offerings where you will be only charged based on the consumption e.g. service invokations, which is a great advantage of using serverless in the public cloud providers.
 
