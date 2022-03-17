@@ -1,5 +1,5 @@
 # Simple Demo of Serverless Architecture Deployment over OpenShift
-In this toturial we will be deploying the sample internet banking demo into a serverless micro-services over OpenShift 4.x
+In this toturial, we will be deploying the sample internet banking demo into a serverless micro-services over OpenShift 4.x
 
 This Serverless demo is using Knative Serving, which is one mode of using Knative Serverless, the other way is to use the Eventing which invoke the serverless based on recieving a message/event to wake up the serverless service.
 
